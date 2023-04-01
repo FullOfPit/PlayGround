@@ -10,8 +10,8 @@ class VectorOpsTest {
     @Test
     void checkDotProduct() {
         //Given
-        Vector a = new Vector(new int[]{3, 4, 7});
-        Vector b = new Vector(new int[]{2, -1, 4});
+        Vector a = new Vector(3, 4, 7);
+        Vector b = new Vector(2, -1, 4);
         //When
         double actual = Vectors.dotProduct(a, b);
         //Then
@@ -34,7 +34,7 @@ class VectorOpsTest {
     @Test
     void checkVectorLength() {
         //Given
-        Vector a = new Vector(new int[]{3, 4, 7});
+        Vector a = new Vector(3, 4, 7);
         //When
         double actual = a.length();
         //Then
@@ -44,8 +44,8 @@ class VectorOpsTest {
     @Test
     void checkAngleBetweenVectors() {
         //Given
-        Vector a = new Vector(new int[]{1, 0, 0});
-        Vector b = new Vector(new int[]{-1, 0, 0});
+        Vector a = new Vector(1, 0, 0);
+        Vector b = new Vector(-1, 0, 0);
         //When
         double actual = Vectors.angle(a, b);
         //Then

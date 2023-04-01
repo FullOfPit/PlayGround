@@ -2,14 +2,22 @@ package algebra;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+
 @Data
 public class Vector {
     private int dimension;
-    private int[] coordinates;
+    private ArrayList<Integer> coordinates;
 
-    public Vector (int[] coordinates) {
-        this.dimension = coordinates.length;
-        this.coordinates = coordinates;
+    public Vector (int... coordinates) {
+
+        this.dimension = 0;
+        this.coordinates = new ArrayList<>();
+
+        for (int coordinate  : coordinates) {
+            this.dimension ++;
+            this.coordinates.add(coordinate);
+        }
     }
 
 
@@ -20,10 +28,10 @@ public class Vector {
         }
 
         this.dimension = a.getCoordinates().size();
-        this.coordinates = new int[this.dimension];
+        this.coordinates = new ArrayList<>();
 
         for (int i = 0; i < dimension; i++) {
-            coordinates[i] = a.getCoordinates().get(i) - b.getCoordinates().get(i);
+            coordinates.add(a.getCoordinates().get(i) - b.getCoordinates().get(i));
         }
     }
 
@@ -34,10 +42,10 @@ public class Vector {
         }
 
         this.dimension = a.length;
-        this.coordinates = new int[this.dimension];
+        this.coordinates = new ArrayList<>();
 
         for (int i = 0; i < dimension; i++) {
-            coordinates[i] = a[i] - b[i];
+            coordinates.add(a[i] - b[i]);
         }
     }
 

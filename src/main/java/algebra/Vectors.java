@@ -14,7 +14,7 @@ public class Vectors {
         dimension = a.getDimension();
 
         for (int i = 0; i < dimension; i++) {
-            result += (a.getCoordinates()[i] * b.getCoordinates()[i]);
+            result += (a.getCoordinates().get(i) * b.getCoordinates().get(i));
         }
 
         return result;
