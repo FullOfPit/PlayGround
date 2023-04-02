@@ -1,7 +1,5 @@
 package algebra;
 
-import java.util.List;
-
 public class Matrix {
     //[row 1: [a, b, c], row 2: [d, e, f]]
     int[][] matrix;
@@ -50,9 +48,7 @@ public class Matrix {
             //change this to get rows/columns via method
             this.matrix = new int[dimensions[0]][dimensions[1]];
 
-            for (int i = 0; i < matrix.length; i++) {
-                this.matrix[i] = matrix[i];
-            }
+            System.arraycopy(matrix, 0, this.matrix, 0, matrix.length);
         }
     }
 
