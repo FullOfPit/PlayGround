@@ -62,4 +62,12 @@ public class Matrix {
         }
         return printedMatrix.toString();
     }
+
+    public boolean checkForVectorLinearity() {
+        //only first row OR column needs to be checked for coordinates in one line
+        //then matrix to be transposed
+        //
+
+        return false;
+    }
 }

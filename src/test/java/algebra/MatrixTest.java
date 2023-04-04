@@ -119,4 +119,83 @@ class MatrixTest {
         Assertions.assertEquals("100;010;001;", actual);
     }
 
+    @ParameterizedTest
+    @MethodSource("parallelVectorSupplier")
+    void testForVectorParalleliism(boolean result, Vector ...vectors) {
+        //Given
+        Matrix A = new Matrix(vectors);
+        //When
+        boolean actual = A.checkForVectorLinearity();
+        //Then
+        Assertions.assertEquals(result, actual);
+    }
+
+    private static Stream<Arguments> parallelVectorSupplier() {
+        return Stream.of(
+                Arguments.arguments(
+                        true,
+                        new Vector[]{
+                                new Vector(1, 0, 0),
+                                new Vector(0, 1, 0),
+                                new Vector(0, 0, 1)
+                        }
+                ),
+                Arguments.arguments(
+                        true,
+                        new Vector[]{
+                                new Vector(1, 1, 1),
+                                new Vector(0, 0, 0),
+                                new Vector(0, 0, 0)
+                        }
+                ),
+                Arguments.arguments(
+                        true,
+                        new Vector[]{
+                                new Vector(1, 0, 0),
+                                new Vector(1, 0, 0),
+                                new Vector(1, 0, 0)
+                        }
+                ),
+                Arguments.arguments(
+                        true,
+                        new Vector[]{
+                                new Vector(0, 0, 0),
+                                new Vector(1, 1, 1),
+                                new Vector(0, 0, 0)
+                        }
+                ),
+                Arguments.arguments(
+                        true,
+                        new Vector[]{
+                                new Vector(1, 0, 0),
+                                new Vector(1, 0, 0),
+                                new Vector(1, 1, 0)
+                        }
+                ),
+                Arguments.arguments(
+                        false,
+                        new Vector[]{
+                                new Vector(0, 0, 0),
+                                new Vector(1, 0, 0),
+                                new Vector(1, 1, 0)
+                        }
+                ),
+                Arguments.arguments(
+                        true,
+                        new Vector[]{
+                                new Vector(1, 0, 0),
+                                new Vector(0, 1, 0),
+                                new Vector(1, 1, 0)
+                        }
+                ),
+                Arguments.arguments(
+                        false,
+                        new Vector[]{
+                                new Vector(0, 0, 0),
+                                new Vector(1, 0, 1),
+                                new Vector(1, 1, 0)
+                        }
+                )
+        );
+    }
 }
